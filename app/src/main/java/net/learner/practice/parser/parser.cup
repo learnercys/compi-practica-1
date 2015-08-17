@@ -1,0 +1,116 @@
+package net.learner.practice.parser;
+
+import java_cup.runtime.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+parser code
+{:
+	public ArrayList<HashMap<String, String>> lErrors = new ArrayList<>();
+
+	public boolean hasUnRecoveredSyntaxError = false;
+
+	public void syntax_error(Symbol cur_token) {
+		// System.err.println("syntax_error " + cur_token );
+		// nothing to do, just to avoid native syntax_error method.
+	}
+
+
+	public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
+		// System.err.println("unrecovered_syntax_error:" + s);
+		// nothing to do.
+		this.hasUnRecoveredSyntaxError = true;
+	}
+:}
+
+terminal
+
+    // single characters
+    plus,
+    minus,
+    multiplication,
+    division,
+    oParen,
+    cParen,
+    comma,
+
+    // single words
+    graph,
+    circle,
+    square,
+    rectangle,
+    line,
+    polygon,
+
+    // colors
+    blue,
+    red,
+    green,
+    yellow,
+    orange,
+    purple,
+    brown,
+    black
+
+    ;
+
+terminal Integer integer;
+
+non terminal
+    COMPONENTS,
+    COMPONENT,
+    IN_COMPONENT,
+    CIRCLE,
+    SQUARE,
+    RECTANGLE,
+    LINE,
+    POLYGON,
+    COLOR,
+    EXPR
+    ;
+
+precedence left plus, minus;
+precedence left multiplication, division;
+
+start with COMPONENTS;
+
+COMPONENTS::=   COMPONENT
+                | COMPONENTS COMPONENT;
+
+COMPONENT::= graph IN_COMPONENT;
+
+IN_COMPONENT::=   CIRCLE
+                | SQUARE
+                | RECTANGLE
+                | LINE
+                | POLYGON;
+
+CIRCLE::=   circle oParen EXPR comma EXPR comma EXPR comma COLOR cParen;
+
+SQUARE::=   square oParen EXPR comma EXPR comma EXPR comma COLOR cParen;
+
+RECTANGLE::=    rectangle oParen EXPR comma EXPR comma EXPR comma EXPR comma COLOR cParen;
+
+LINE::= line oParen EXPR comma EXPR comma EXPR comma EXPR comma COLOR cParen;
+
+POLYGON::=  polygon oParen EXPR comma EXPR comma EXPR comma EXPR comma EXPR comma COLOR cParen;
+
+
+COLOR::=    blue
+            | red
+            | green
+            | yellow
+            | orange
+            | purple
+            | brown
+            | black;
+
+
+EXPR::= EXPR plus EXPR
+        | EXPR minus EXPR
+        | EXPR multiplication EXPR
+        | EXPR division EXPR
+        | oParen EXPR cParen
+        | integer;
+
+
