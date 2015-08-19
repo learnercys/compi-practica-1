@@ -9,7 +9,8 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:hint="@string/statement"
-        android:gravity="top"/>
+        android:gravity="top"
+        android:id="@+id/toCompile"/>
 
     <Button
         android:layout_width="wrap_content"

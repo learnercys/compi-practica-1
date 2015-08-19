@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * @author learnercys on 16/08/15.
@@ -13,6 +14,7 @@ import android.widget.Button;
 public class FragmentEditor extends Fragment implements View.OnClickListener {
 
     Button compileBtn;
+    EditText toCompile;
     View view;
 
     public FragmentEditor() {
@@ -29,6 +31,9 @@ public class FragmentEditor extends Fragment implements View.OnClickListener {
         // set listener to compilation button
         compileBtn.setOnClickListener(this);
 
+        // get text area
+        toCompile = (EditText) view.findViewById(R.id.toCompile);
+
         // send view to pager adapter
         return view;
     }
@@ -38,7 +43,7 @@ public class FragmentEditor extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.compile:
                 //fragmentEvents.onClickButton("compile");
-                ((MainActivity)getActivity()).onCompileButton();
+                ((MainActivity)getActivity()).onCompileButton(toCompile.getText().toString());
                 break;
 
             default:
