@@ -65,9 +65,10 @@ non terminal
     RECTANGLE,
     LINE,
     POLYGON,
-    COLOR,
-    EXPR
+    COLOR
     ;
+
+non terminal Integer EXPR;
 
 precedence left plus, minus;
 precedence left multiplication, division;
@@ -106,11 +107,12 @@ COLOR::=    blue
             | black;
 
 
-EXPR::= EXPR plus EXPR
-        | EXPR minus EXPR
-        | EXPR multiplication EXPR
-        | EXPR division EXPR
-        | oParen EXPR cParen
-        | integer;
+EXPR::= EXPR:e1 plus EXPR:e2                {: RESULT = e1 + e2; :}
+        | EXPR:e1 minus EXPR:e2             {: RESULT = e1 - e2; :}
+        | EXPR:e1 multiplication EXPR:e2    {: RESULT = e1 * e2; :}
+        | EXPR:e1 division EXPR:e2          {: RESULT = e1 / e2; /* if e2 ===0. semantic error, the life if to short to worry about it.*/:}
+        | oParen EXPR:e cParen              {: RESULT = e; :}
+        | integer:n                         {: RESULT = n; :}
+        ;
 
 
