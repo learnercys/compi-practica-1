@@ -14,6 +14,7 @@ import android.widget.Button;
 public class FragmentCanvas extends Fragment implements View.OnClickListener {
 
     Button backBtn;
+    CustomCanvasView customCanvasView;
     View view;
 
     public FragmentCanvas() {
@@ -29,6 +30,9 @@ public class FragmentCanvas extends Fragment implements View.OnClickListener {
 
         // set listener to compilation button
         backBtn.setOnClickListener(this);
+
+        // get the canvas
+        customCanvasView = (CustomCanvasView) view.findViewById(R.id.customCanvas);
 
         // send view to pager adapter
         return view;

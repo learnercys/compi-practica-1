@@ -58,7 +58,7 @@ public class MainActivity extends FragmentActivity {
                         .setMessage("La sentecia ingresada contiene errores lexicos")
                         .show();
 
-                // TODO show errors
+                // TODO show lexical errors
 
                 return;
             }
