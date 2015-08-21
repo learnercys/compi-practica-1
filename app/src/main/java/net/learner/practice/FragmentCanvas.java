@@ -32,7 +32,7 @@ public class FragmentCanvas extends Fragment implements View.OnClickListener {
         backBtn.setOnClickListener(this);
 
         // get the canvas
-        //customCanvasView = (CustomCanvasView) view.findViewById(R.id.customCanvas);
+        customCanvasView = (CustomCanvasView) view.findViewById(R.id.customCanvas);
 
         // send view to pager adapter
         return view;
