@@ -19,12 +19,24 @@ public class Shape {
         values.add(value);
     }
 
+    public ArrayList<Integer> getValues () {
+        return this.values;
+    }
+
     public void setColor(String color) {
         this.color = color;
     }
 
+    public String getColor () {
+        return this.color;
+    }
+
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getType( ) {
+        return this.type;
     }
 
 }

@@ -93,15 +93,17 @@ CIRCLE::=   circle oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma COLOR:color 
     shape.addValue(e1);
     shape.addValue(e2);
     shape.addValue(e3);
+    this.parser.shapes.add(shape);
 :};
 
 SQUARE::=   square oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma COLOR:color cParen {:
     Shape shape = new Shape();
     shape.setType("square");
     shape.setColor(color);
-    shape.addValue(e1):
-    shape.addValue(e2):
-    shape.addValue(e3):
+    shape.addValue(e1);
+    shape.addValue(e2);
+    shape.addValue(e3);
+    this.parser.shapes.add(shape);
 :};
 
 RECTANGLE::=    rectangle oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma EXPR:e4 comma COLOR:color cParen {:
@@ -112,16 +114,18 @@ RECTANGLE::=    rectangle oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma EXPR:
     shape.addValue(e2);
     shape.addValue(e3);
     shape.addValue(e4);
+    this.parser.shapes.add(shape);
 :};
 
 LINE::= line oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma EXPR:e4 comma COLOR:color cParen {:
     Shape shape = new Shape();
     shape.setType("line");
     shape.setColor(color);
-    shape.setValue(e1);
-    shape.setValue(e2);
-    shape.setValue(e3);
-    shape.setValue(e4);
+    shape.addValue(e1);
+    shape.addValue(e2);
+    shape.addValue(e3);
+    shape.addValue(e4);
+    this.parser.shapes.add(shape);
 :};
 
 POLYGON::=  polygon oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma EXPR:e4 comma EXPR:e5 comma COLOR:color cParen {:
@@ -133,6 +137,7 @@ POLYGON::=  polygon oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma EXPR:e4 com
     shape.addValue(e3);
     shape.addValue(e4);
     shape.addValue(e5);
+    this.parser.shapes.add(shape);
 :};
 
 

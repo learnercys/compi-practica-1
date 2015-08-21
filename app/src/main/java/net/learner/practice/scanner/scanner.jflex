@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java_cup.runtime.*;
 import net.learner.practice.parser.*;
+import java.lang.Integer;
 
 %%
 %public
@@ -23,8 +24,13 @@ import net.learner.practice.parser.*;
 	public ArrayList<HashMap<String, String>> errors = new ArrayList<>();
 
 	private Symbol symbol(int type) {
-	  return new Symbol(type, yyline, yycolumn);
+	  return new Symbol(type, yyline, yycolumn, yytext());
 	}
+
+	private Symbol intSymbol(int type) {
+	    return new Symbol(type, yyline, yycolumn, Integer.parseInt(yytext()));
+	}
+
 	private Symbol symbol(int type, Object value) {
 	  return new Symbol(type, yyline, yycolumn, value);
 	}
@@ -38,6 +44,7 @@ division    = "/"
 oParen  = "("
 cParen  = ")"
 comma	= ","
+WhiteSpace  =[ \n\t\f]
 
 // single words
 graph   = "graficar"
@@ -85,7 +92,9 @@ integer = [0-9][0-9]*
 {brown} { return symbol(sym.brown); }
 {black} { return symbol(sym.black); }
 
-{integer} { return symbol(sym.integer); }
+{integer} { return intSymbol(sym.integer); }
+
+{WhiteSpace} { /*System.out.println("WhiteSpace");*/ }
 
 . {
 	System.out.println("Line: " + (yyline+1) + " Column: " + (yycolumn+1) + " - Lexical error in: " + yytext());
