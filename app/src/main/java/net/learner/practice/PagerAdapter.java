@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
  * @author learnercys on 16/08/15.
  */
 public class PagerAdapter extends FragmentPagerAdapter {
+    FragmentEditor fragmentEditor = new FragmentEditor();
+    FragmentCanvas fragmentCanvas = new FragmentCanvas();
 
     public PagerAdapter(FragmentManager fm) {
         super(fm);
@@ -17,10 +19,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FragmentEditor();
+                return fragmentEditor;
 
             case 1:
-                return new FragmentCanvas();
+                return fragmentCanvas;
 
             default:
                 break;

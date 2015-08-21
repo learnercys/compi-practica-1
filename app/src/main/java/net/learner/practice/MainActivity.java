@@ -59,11 +59,13 @@ public class MainActivity extends FragmentActivity {
                         .show();
 
                 // TODO show lexical errors
+                pagerAdapter.fragmentCanvas.setErrors(scanner.errors);
 
-                return;
+            } else {
+                // TODO show shapes
+                pagerAdapter.fragmentCanvas.setShape(parser.shapes);
+
             }
-
-            // TODO show shapes
 
         } catch ( IOException ioe) {
             // do nothing

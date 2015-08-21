@@ -7,49 +7,41 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
+
 /**
  * @author learnercys on 8/20/15.
  */
 public class CustomCanvasView extends View {
     private ShapeDrawable mDrawable;
+    private Shape shape;
 
 
     public CustomCanvasView(Context context, AttributeSet attributeSet) {
         super(context);
 
-        int x = 10;
+        /*int x = 10;
         int y = 10;
         int width = 300;
         int height = 50;
 
         mDrawable = new ShapeDrawable(new OvalShape());
         mDrawable.getPaint().setColor(0xff74AC23);
-        mDrawable.setBounds(x, y, x + width, y + height);
+        mDrawable.setBounds(x, y, x + width, y + height);*/
 
     }
 
     protected void onDraw(Canvas canvas) {
-        mDrawable.draw(canvas);
+        //mDrawable.draw(canvas);
     }
 
-    public void drawCircle ( ) {
-
-    }
-
-    public void drawSquare ( ) {
+    public void onDrawCircle ( Shape circle ) {
+        ArrayList<Integer> values = circle.getValues();
 
     }
 
-    public void drawRectangle ( ) {
-
-    }
-
-    public void drawLine ( ) {
-
-    }
-
-    public void drawPolygon ( ) {
-
+    public void setShape( Shape shape ) {
+        this.shape = shape;
     }
 
 }
