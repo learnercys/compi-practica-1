@@ -78,6 +78,8 @@ public class MainActivity extends FragmentActivity {
             new AlertDialog.Builder(this)
                     .setMessage("Exception fired")
                     .show();
+
+            e.printStackTrace();
         }
 
         viewPager.setCurrentItem(1);

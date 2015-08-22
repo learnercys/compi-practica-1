@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -65,6 +68,7 @@ public class FragmentCanvas extends Fragment implements View.OnClickListener {
 
         // table header
         TableRow header = new TableRow(getActivity());
+
         // title
         TextView titleElement = new TextView(getActivity());
         titleElement.setText("Elemento");
@@ -82,9 +86,38 @@ public class FragmentCanvas extends Fragment implements View.OnClickListener {
 
         errorList.addView(header);
 
+
+
+        for( HashMap<String,String> error: errors) {
+            System.out.println("new error: " + error.get("text"));
+
+            // table error
+            TableRow errorRow = new TableRow(getActivity());
+
+            // title error
+            TextView titleError = new TextView(getActivity());
+            titleError.setText(error.get("text"));
+            errorRow.addView(titleError);
+
+            // line error
+            TextView lineError= new TextView(getActivity());
+            lineError.setText(error.get("line"));
+            errorRow.addView(lineError);
+
+            // column error
+            TextView columnError = new TextView(getActivity());
+            columnError.setText(error.get("column"));
+            errorRow.addView(columnError);
+
+            errorList.addView(errorRow);
+
+        }
+
     }
 
     public void setShape(ArrayList<Shape> shapes) {
         // TODO hide the table and sow the canvas
+        customCanvasView.setVisibility(View.VISIBLE);
+        errorList.setVisibility(View.GONE);
     }
 }

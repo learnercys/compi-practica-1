@@ -18,7 +18,7 @@ public class CustomCanvasView extends View {
 
 
     public CustomCanvasView(Context context, AttributeSet attributeSet) {
-        super(context);
+        super(context, attributeSet);
 
         /*int x = 10;
         int y = 10;
