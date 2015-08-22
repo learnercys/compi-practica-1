@@ -3,6 +3,7 @@ package net.learner.practice;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
@@ -36,7 +37,6 @@ public class CustomCanvasView extends View {
     protected void onDraw(Canvas canvas) {
         //mDrawable.draw(canvas);
         if ( shape != null )  {
-            System.out.println("shape not null, drawing");
             switch (shape.getType()) {
                 case "circle":
                     drawCircle();
@@ -51,7 +51,8 @@ public class CustomCanvasView extends View {
                     break;
 
                 case "line":
-                    break;
+                    drawLine(canvas);
+                    return;
 
                 case "polygon":
                     break;
@@ -103,6 +104,21 @@ public class CustomCanvasView extends View {
         mDrawable = new ShapeDrawable();
         mDrawable.getPaint().setColor(getColor(shape.getColor()));
         mDrawable.setBounds(x, y, x + height, y + width);
+    }
+
+    public void drawLine ( Canvas canvas) {
+        ArrayList<Integer> values = shape.getValues();
+
+        float
+                x1 = values.get(0),
+                y1 = values.get(1),
+                x2 = values.get(2),
+                y2 = values.get(3);
+
+
+        Paint paint = new Paint();
+        paint.setColor(getColor(shape.getColor()));
+        canvas.drawLine(x1, y1, x2, y2, paint);
     }
 
     public void setShape(Shape shape) {
