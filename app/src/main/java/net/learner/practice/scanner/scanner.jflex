@@ -78,7 +78,7 @@ integer = [0-9][0-9]*
 
 {graph} { return symbol(sym.graph); }
 {circle} { return symbol(sym.circle); }
-{square} { return symbol(sym.comma); }
+{square} { return symbol(sym.square); }
 {rectangle} { return symbol(sym.rectangle); }
 {line} { return symbol(sym.line); }
 {polygon} { return symbol(sym.polygon); }

@@ -115,9 +115,17 @@ public class FragmentCanvas extends Fragment implements View.OnClickListener {
 
     }
 
+    /**
+     * hide the table and sow the canvas
+     * @param shapes the shapes to draw
+     */
     public void setShape(ArrayList<Shape> shapes) {
-        // TODO hide the table and sow the canvas
         customCanvasView.setVisibility(View.VISIBLE);
         errorList.setVisibility(View.GONE);
+
+        for (Shape shape: shapes) {
+            customCanvasView.setShape(shape);
+            customCanvasView.invalidate();
+        }
     }
 }

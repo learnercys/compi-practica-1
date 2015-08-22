@@ -2,6 +2,7 @@ package net.learner.practice;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class CustomCanvasView extends View {
     private ShapeDrawable mDrawable;
     private Shape shape;
+    private ArrayList<Shape> shapes;
 
 
     public CustomCanvasView(Context context, AttributeSet attributeSet) {
@@ -33,15 +35,83 @@ public class CustomCanvasView extends View {
 
     protected void onDraw(Canvas canvas) {
         //mDrawable.draw(canvas);
+        if ( shape != null )  {
+            System.out.println("shape not null, drawing");
+            switch (shape.getType()) {
+                case "circle":
+                    drawCircle();
+                    break;
+
+                case "square":
+                    drawSquare();
+                    break;
+
+                case "rectangle":
+                    break;
+
+                case "line":
+                    break;
+
+                case "polygon":
+                    break;
+            }
+
+            mDrawable.draw(canvas);
+        } else {
+            System.out.println("shape null");
+        }
     }
 
-    public void onDrawCircle ( Shape circle ) {
-        ArrayList<Integer> values = circle.getValues();
+    public void drawCircle (   ) {
+        ArrayList<Integer> values = shape.getValues();
+
+        int
+                x = values.get(0),
+                y = values.get(1),
+                height = values.get(2),
+                width = values.get(2);
+
+        mDrawable = new ShapeDrawable(new OvalShape());
+        mDrawable.getPaint().setColor(getColor(shape.getColor()));
+        mDrawable.setBounds(x, y, x + width, y + height);
 
     }
 
-    public void setShape( Shape shape ) {
+    public void drawSquare() {
+        ArrayList<Integer> values = shape.getValues();
+
+        int
+                x = values.get(0),
+                y = values.get(1),
+                sides = values.get(2);
+
+        mDrawable = new ShapeDrawable();
+        mDrawable.getPaint().setColor(getColor(shape.getColor()));
+        mDrawable.setBounds(x, y, x + sides, y + sides);
+    }
+
+    public void setShape(Shape shape) {
         this.shape = shape;
     }
+
+    public void setShapes(ArrayList<Shape> shapes) {
+        this.shapes = shapes;
+    }
+
+    private int getColor(String color) {
+        System.out.println("color: " + color);
+        switch (color) {
+            case "azul": return Color.BLUE;
+            case "rojo": return Color.RED;
+            case "verde": return Color.GREEN;
+            case "amarillo": return Color.YELLOW;
+            case "naranja": return Color.rgb(255,165,0);
+            case "morado": return Color.rgb(128,0,128);
+            case "cafe": return Color.rgb(165,42,42);
+            case "negro": return Color.BLACK;
+            default: return Color.rgb(255,222,173);
+        }
+    }
+
 
 }

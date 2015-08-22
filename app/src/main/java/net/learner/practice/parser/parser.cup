@@ -141,14 +141,15 @@ POLYGON::=  polygon oParen EXPR:e1 comma EXPR:e2 comma EXPR:e3 comma EXPR:e4 com
 :};
 
 
-COLOR::=    blue
-            | red
-            | green
-            | yellow
-            | orange
-            | purple
-            | brown
-            | black;
+COLOR::=    blue:blue       {: RESULT = blue; :}
+            | red:red       {: RESULT = red; :}
+            | green:green   {: RESULT = green; :}
+            | yellow:yellow {: RESULT = yellow; :}
+            | orange:orange {: RESULT = orange; :}
+            | purple:purple {: RESULT = purple; :}
+            | brown:brown   {: RESULT = brown; :}
+            | black:black   {: RESULT = black; :}
+            ;
 
 
 EXPR::= EXPR:e1 plus EXPR:e2                {: RESULT = e1 + e2; :}
