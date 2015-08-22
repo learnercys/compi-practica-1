@@ -156,8 +156,7 @@ public class CustomCanvasView extends View {
                 cy = (float)(yCenter - radius * Math.sin(cAngle / 57.2957795));
                 path.lineTo(cx, cy);
             }
-            System.out.println("cx: " + cx);
-            System.out.println("cy: " + cy);
+
             cAngle += angle;
         }
 
