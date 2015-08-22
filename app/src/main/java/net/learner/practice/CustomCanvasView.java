@@ -47,6 +47,7 @@ public class CustomCanvasView extends View {
                     break;
 
                 case "rectangle":
+                    drawRectangle();
                     break;
 
                 case "line":
@@ -88,6 +89,20 @@ public class CustomCanvasView extends View {
         mDrawable = new ShapeDrawable();
         mDrawable.getPaint().setColor(getColor(shape.getColor()));
         mDrawable.setBounds(x, y, x + sides, y + sides);
+    }
+
+    public void drawRectangle() {
+        ArrayList<Integer> values = shape.getValues();
+
+        int
+                x = values.get(0),
+                y = values.get(1),
+                height = values.get(2),
+                width = values.get(3);
+
+        mDrawable = new ShapeDrawable();
+        mDrawable.getPaint().setColor(getColor(shape.getColor()));
+        mDrawable.setBounds(x, y, x + height, y + width);
     }
 
     public void setShape(Shape shape) {
