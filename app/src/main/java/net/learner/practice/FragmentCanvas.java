@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -55,7 +57,31 @@ public class FragmentCanvas extends Fragment implements View.OnClickListener {
     }
 
     public void setErrors(ArrayList<HashMap<String,String>> errors) {
-        // TODO hide the canvas and show the table
+
+        customCanvasView.setVisibility(View.GONE);
+        errorList.setVisibility(View.VISIBLE);
+
+        errorList.removeAllViews();
+
+        // table header
+        TableRow header = new TableRow(getActivity());
+        // title
+        TextView titleElement = new TextView(getActivity());
+        titleElement.setText("Elemento");
+        header.addView(titleElement );
+
+        // line
+        TextView lineElement = new TextView(getActivity());
+        lineElement.setText("Linea");
+        header.addView(lineElement);
+
+        // column
+        TextView columnElement = new TextView(getActivity());
+        columnElement.setText("Columna");
+        header.addView(columnElement);
+
+        errorList.addView(header);
+
     }
 
     public void setShape(ArrayList<Shape> shapes) {
