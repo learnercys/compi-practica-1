@@ -57,13 +57,13 @@ public class CustomCanvasView extends View {
     }
 
     public void drawCircle (   ) {
-        ArrayList<Integer> values = shape.getValues();
+        ArrayList<Double> values = shape.getValues();
 
         int
-                x = values.get(0),
-                y = values.get(1),
-                height = values.get(2),
-                width = values.get(2);
+                x = values.get(0).intValue(),
+                y = values.get(1).intValue(),
+                height = values.get(2).intValue(),
+                width = values.get(2).intValue();
 
         mDrawable = new ShapeDrawable(new OvalShape());
         mDrawable.getPaint().setColor(getColor(shape.getColor()));
@@ -72,12 +72,12 @@ public class CustomCanvasView extends View {
     }
 
     public void drawSquare() {
-        ArrayList<Integer> values = shape.getValues();
+        ArrayList<Double> values = shape.getValues();
 
         int
-                x = values.get(0),
-                y = values.get(1),
-                sides = values.get(2);
+                x = values.get(0).intValue(),
+                y = values.get(1).intValue(),
+                sides = values.get(2).intValue();
 
         mDrawable = new ShapeDrawable();
         mDrawable.getPaint().setColor(getColor(shape.getColor()));
@@ -85,13 +85,13 @@ public class CustomCanvasView extends View {
     }
 
     public void drawRectangle() {
-        ArrayList<Integer> values = shape.getValues();
+        ArrayList<Double> values = shape.getValues();
 
         int
-                x = values.get(0),
-                y = values.get(1),
-                height = values.get(2),
-                width = values.get(3);
+                x = values.get(0).intValue(),
+                y = values.get(1).intValue(),
+                height = values.get(2).intValue(),
+                width = values.get(3).intValue();
 
         mDrawable = new ShapeDrawable();
         mDrawable.getPaint().setColor(getColor(shape.getColor()));
@@ -99,13 +99,13 @@ public class CustomCanvasView extends View {
     }
 
     public void drawLine ( Canvas canvas) {
-        ArrayList<Integer> values = shape.getValues();
+        ArrayList<Double> values = shape.getValues();
 
         float
-                x1 = values.get(0),
-                y1 = values.get(1),
-                x2 = values.get(2),
-                y2 = values.get(3);
+                x1 = values.get(0).intValue(),
+                y1 = values.get(1).intValue(),
+                x2 = values.get(2).intValue(),
+                y2 = values.get(3).intValue();
 
 
         Paint paint = new Paint();
@@ -115,14 +115,14 @@ public class CustomCanvasView extends View {
 
     public void drawPolygon( Canvas canvas) {
 
-        ArrayList<Integer> values = shape.getValues();
+        ArrayList<Double> values = shape.getValues();
 
         int
-                x = values.get(0),
-                y = values.get(1),
-                height = values.get(2),
-                width = values.get(3),
-                sides = values.get(4),
+                x = values.get(0).intValue(),
+                y = values.get(1).intValue(),
+                height = values.get(2).intValue(),
+                width = values.get(3).intValue(),
+                sides = values.get(4).intValue(),
                 radius = height < width ? height / 2 : width / 2;
 
         Paint paint = new Paint();
