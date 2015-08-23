@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Shape {
 
-    private ArrayList<Integer> values;
+    private ArrayList<Double> values;
     private String color;
     private String type;
 
@@ -15,11 +15,11 @@ public class Shape {
         values = new ArrayList<>();
     }
 
-    public void addValue(Integer value) {
+    public void addValue(Double value) {
         values.add(value);
     }
 
-    public ArrayList<Integer> getValues () {
+    public ArrayList<Double> getValues () {
         return this.values;
     }
 

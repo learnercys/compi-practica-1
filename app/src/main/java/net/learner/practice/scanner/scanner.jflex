@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java_cup.runtime.*;
 import net.learner.practice.parser.*;
-import java.lang.Integer;
+import java.lang.Double;
 
 %%
 %public
@@ -28,7 +28,7 @@ import java.lang.Integer;
 	}
 
 	private Symbol intSymbol(int type) {
-	    return new Symbol(type, yyline, yycolumn, Integer.parseInt(yytext()));
+	    return new Symbol(type, yyline, yycolumn, Double.parseDouble(yytext()));
 	}
 
 	private Symbol symbol(int type, Object value) {
@@ -65,7 +65,7 @@ brown   = "cafe"
 black   = "negro"
 
 // er
-integer = [0-9][0-9]*
+integer = [0-9][0-9]*("."[0-9]+)?
 
 %%
 {plus} { return symbol(sym.plus); }
